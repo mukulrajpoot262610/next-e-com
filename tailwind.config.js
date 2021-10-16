@@ -10,11 +10,14 @@ module.exports = {
         '500': '50vh',
         '250': '25vh'
       },
+      maxHeight: {
+        '900': '90vh'
+      },
       width: {
         '500': '50rem'
       },
       colors: {
-        'secondary': '#FFF5F0'
+        'secondary': '#fff'
       }
     },
   },

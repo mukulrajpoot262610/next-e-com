@@ -5,8 +5,8 @@ const Header = () => {
     return (
         <div className="w-full rounded-2xl">
             <Carousel autoplay className="rounded-2xl">
-                <img src="/banner_1.png" className="rounded-2xl h-250 lg:h-500 xl:h-900 object-cover object-left" />
-                <img src="/banner_2.png" className="rounded-2xl h-250 lg:h-500 xl:h-900 object-cover object-left" />
+                <img src="/banner_1.png" className="rounded-2xl h-250 lg:h-500 xl:h-900 object-cover object-left lg:object-bottom" />
+                <img src="/banner_2.png" className="rounded-2xl h-250 lg:h-500 xl:h-900 object-cover object-left lg:object-bottom" />
                 <img src="/banner_3.jpg" className="rounded-2xl h-250 lg:h-500 xl:h-900 object-cover object-left" />
                 <img src="/banner_4.png" className="rounded-2xl h-250 lg:h-500 xl:h-900 object-cover object-right" />
             </Carousel>
