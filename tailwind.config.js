@@ -10,6 +10,9 @@ module.exports = {
         '500': '50vh',
         '250': '25vh'
       },
+      width: {
+        '500': '50rem'
+      },
       colors: {
         'secondary': '#FFF5F0'
       }

@@ -7,7 +7,7 @@ const Layout = ({ children }) => {
     return (
         <div className="bg-secondary">
             <Navbar />
-            <div className="mt-16">
+            <div className="mt-16 min-h-screen overflow-hidden">
                 {children}
             </div>
             <Footer />
