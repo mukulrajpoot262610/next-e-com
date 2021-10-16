@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Header from '../components/Header'
 import ProductCover from '../components/ProductCover'
-import POPULAR_DATA from '../public/popular'
+import PRODUCT_LIST from '../public/product.list'
 import { useState, useEffect } from 'react';
 
 export default function Home() {
@@ -48,7 +48,7 @@ export default function Home() {
         <h1 className="font-bold text-4xl uppercase mb-6 text-center">Popular products</h1>
         <div className="flex flex-wrap justify-evenly">
           {
-            POPULAR_DATA.filter((e) => e.id < 6).map((e, index) => <ProductCover data={e} key={index} />)
+            PRODUCT_LIST.map((e, index) => <ProductCover data={e} key={index} />)
           }
         </div>
       </div>
@@ -64,7 +64,7 @@ export default function Home() {
         <h1 className="text-3xl uppercase font-bold mb-6 text-center">RECOMMENDED FOR YOU</h1>
         <div className="flex flex-wrap justify-evenly">
           {
-            POPULAR_DATA.filter((e) => e.id > 7 && e.id < 13).map((e, index) => <ProductCover data={e} key={index} />)
+            PRODUCT_LIST.map((e, index) => <ProductCover data={e} key={index} />)
           }
         </div>
       </div>

@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "data:import": ""
   },
   "dependencies": {
     "antd": "^4.16.13",
