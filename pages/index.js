@@ -3,8 +3,16 @@ import Header from '../components/Header'
 import ProductCover from '../components/ProductCover'
 import PRODUCT_LIST from '../public/product.list'
 import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
+import { listProducts } from '../store/actions/productAction'
+import { Spin, Alert } from 'antd';
 
 export default function Home() {
+
+  const dispatch = useDispatch()
+  const productList = useSelector(state => state.product)
+  const { loading, error, products } = productList
+  console.log(products)
 
   function useWindowSize() {
     const [windowSize, setWindowSize] = useState({
@@ -31,7 +39,10 @@ export default function Home() {
 
   const size = useWindowSize();
 
-  console.log(size)
+  useEffect(() => {
+    dispatch(listProducts())
+  }, [dispatch])
+
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -48,7 +59,7 @@ export default function Home() {
         <h1 className="font-bold text-4xl uppercase mb-6 text-center">Popular products</h1>
         <div className="flex flex-wrap justify-evenly">
           {
-            PRODUCT_LIST.map((e, index) => <ProductCover data={e} key={index} />)
+            loading ? <Spin size='large' /> : error ? (<Alert message="Error" type="error" showIcon />) : products?.map((e, index) => <ProductCover data={e} key={index} />)
           }
         </div>
       </div>
@@ -64,14 +75,14 @@ export default function Home() {
         <h1 className="text-3xl uppercase font-bold mb-6 text-center">RECOMMENDED FOR YOU</h1>
         <div className="flex flex-wrap justify-evenly">
           {
-            PRODUCT_LIST.map((e, index) => <ProductCover data={e} key={index} />)
+            loading ? <Spin size='large' /> : error ? (<Alert message="Error" type="error" showIcon />) : products?.map((e, index) => <ProductCover data={e} key={index} />)
           }
         </div>
       </div>
 
       <div className="w-full my-8 px-4 lg:px-10 relative">
         <video autoPlay loop muted className="w-full h-750 rounded-2xl object-cover">
-          <source src="https://r5---sn-qxaelnel.googlevideo.com/videoplayback?expire=1634291466&ei=qvpoYbKfJ4iriwTT4IjABQ&ip=38.145.80.60&id=o-ADRci1P06UoOFh4jHpCZTrjeXDSasuaOBhTpt6iMugtb&itag=18&source=youtube&requiressl=yes&vprv=1&mime=video%2Fmp4&ns=E09rPi-avgCgGbyGjI3zEz8G&gir=yes&clen=22114728&ratebypass=yes&dur=252.145&lmt=1405679656173301&fexp=24001373,24007246&c=WEB&n=qliRT_tSJoyqkMF1YE&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cvprv%2Cmime%2Cns%2Cgir%2Cclen%2Cratebypass%2Cdur%2Clmt&sig=AOq0QJ8wRQIhAJNtzNOJgkJpz_-a1W71SNqIqlDXoWtGgNJ1QXn2zXdRAiBIMDD8HYPcdUA0xzxeQhPMTXClquEzzP5cevoKrfXx1A==&title=Nike+Football++Commercial+-+Ronaldo+%26+Irina&redirect_counter=1&cm2rm=sn-gwpa-a3vr7e&req_id=a8f2e93176d7a3ee&cms_redirect=yes&ipbypass=yes&mh=Ga&mip=2409:4063:4e11:432c:797a:c9bc:fec2:bca5&mm=29&mn=sn-qxaelnel&ms=rdu&mt=1634269720&mv=m&mvi=5&pl=41&lsparams=ipbypass,mh,mip,mm,mn,ms,mv,mvi,pl&lsig=AG3C_xAwRAIgJjQK8hYzvAnSCWUAwOE3VJu8lUNMi1XVzgqxh-ZJuugCIGwi4cTEnffpnJtDxgUR0YpMThmYt4X4jpfjZjRYGC7Q" />
+          <source src="" />
         </video>
         <div className="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 flex items-center justify-between w-9/12 flex-col-reverse xl:flex-row">
           <div>

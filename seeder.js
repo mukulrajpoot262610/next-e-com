@@ -1,19 +1,26 @@
-import mongoose from 'mongoose'
-import Product from '../models/productModel'
-import connectDB from '../config/db'
-import product from '../public/product.list'
+const mongoose = require('mongoose')
+const Product = require('./models/productModel')
+const User = require('./models/UserModel')
+const connectDB = require('./config/db')
+const product = require('./public/product.list')
+const user = require('./public/user.list')
 
 connectDB()
 
 const importData = async () => {
     try {
         await Product.deleteMany()
+        await User.deleteMany()
+
+        const sampleUser = await User.insertMany(user)
+
+        const adminUser = sampleUser[0]._id
 
         const sampleProducts = product.map(product => {
-            return { ...product, user: 'd' }
+            return { ...product, user: adminUser }
         })
 
-        await Products.insertMany(sampleProducts)
+        await Product.insertMany(sampleProducts)
 
         console.log('Data Imported Successfully...')
         process.exit()
@@ -27,6 +34,7 @@ const importData = async () => {
 const DestroyData = async () => {
     try {
         await Product.deleteMany()
+        await User.deleteMany()
 
         console.log('Data Imported Successfully...')
         process.exit()

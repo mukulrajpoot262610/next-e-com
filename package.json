@@ -3,12 +3,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "data:import": ""
+    "start": "next start"
   },
   "dependencies": {
     "antd": "^4.16.13",
+    "axios": "^0.23.0",
     "daisyui": "^1.14.2",
+    "express": "^4.17.1",
     "firebase": "^8.9.1",
     "firebase-admin": "^9.11.1",
     "mongoose": "^6.0.7",

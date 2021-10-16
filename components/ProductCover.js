@@ -1,6 +1,6 @@
 import React from 'react'
 import { Rate, Carousel } from 'antd';
-
+import Link from 'next/link'
 
 const ProductCover = ({ data }) => {
 
@@ -8,14 +8,17 @@ const ProductCover = ({ data }) => {
 
     return (
         <div className="relative w-80 h-500 rounded-2xl bg-white shadow-lg m-2">
-            <Carousel autoplay className="rounded-2xl">
-                <img src={image} className="h-72 object-cover rounded-2xl" />
-                <img src={image1} className="h-72 object-cover rounded-2xl" />
-                <img src={image2} className="h-72 object-cover rounded-2xl" />
-                <img src={image3} className="h-72 object-cover rounded-2xl" />
-            </Carousel>
-            {/* <img src={image} alt="" className="h-3/5 object-cover w-full rounded-2xl" /> */}
-            <h1 className=" mt-2 mx-4 font-bold text-base">{name}</h1>
+            <Link href={`/product/${name}`}>
+                <Carousel autoplay className="rounded-2xl cursor-pointer">
+                    <img src={image} className="h-72 object-cover rounded-2xl" />
+                    <img src={image1} className="h-72 object-cover rounded-2xl" />
+                    <img src={image2} className="h-72 object-cover rounded-2xl" />
+                    <img src={image3} className="h-72 object-cover rounded-2xl" />
+                </Carousel>
+            </Link>
+            <Link href={`/product/${name}`}>
+                <h1 className=" mt-2 mx-4 font-bold text-base cursor-pointer">{name}</h1>
+            </Link>
             <div className="flex items-center">
                 <Rate disabled allowHalf defaultValue={rating} className=" ml-4 mr-2 my-1" />
                 <h1 className="text-lg">({numOfReviews})</h1>
