@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Header from '../components/Header'
 import ProductCover from '../components/ProductCover'
-import PRODUCT_LIST from '../public/product.list'
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { listProducts } from '../store/actions/productAction'
@@ -10,7 +9,7 @@ import { Spin, Alert } from 'antd';
 export default function Home() {
 
   const dispatch = useDispatch()
-  const productList = useSelector(state => state.product)
+  const productList = useSelector(state => state.productList)
   const { loading, error, products } = productList
   console.log(products)
 

@@ -14,7 +14,7 @@ module.exports = {
         '500': '50rem'
       },
       colors: {
-        'secondary': '#FFF5F0'
+        'secondary': '#F6F6F6'
       }
     },
   },

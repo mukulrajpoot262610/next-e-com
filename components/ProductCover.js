@@ -1,22 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Rate, Carousel } from 'antd';
 import Link from 'next/link'
 
+
 const ProductCover = ({ data }) => {
 
-    const { name, rating, price, salePrice, image, image1, image2, image3, numOfReviews } = data
+    const { _id, name, rating, price, salePrice, image, image1, image2, image3, numOfReviews } = data
 
     return (
         <div className="relative w-80 h-500 rounded-2xl bg-white shadow-lg m-2">
-            <Link href={`/product/${name}`}>
-                <Carousel autoplay className="rounded-2xl cursor-pointer">
+            <Link href={`/product/${_id}`}>
+                <Carousel autoplay className="rounded-2xl">
                     <img src={image} className="h-72 object-cover rounded-2xl" />
                     <img src={image1} className="h-72 object-cover rounded-2xl" />
                     <img src={image2} className="h-72 object-cover rounded-2xl" />
                     <img src={image3} className="h-72 object-cover rounded-2xl" />
                 </Carousel>
             </Link>
-            <Link href={`/product/${name}`}>
+            <Link href={`/product/${_id}`}>
                 <h1 className=" mt-2 mx-4 font-bold text-base cursor-pointer">{name}</h1>
             </Link>
             <div className="flex items-center">
