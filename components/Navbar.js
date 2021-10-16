@@ -22,7 +22,7 @@ const Navbar = () => {
                 </Badge>
                 <Badge count={cartItems.length ? cartItems.length : ""}>
                     <h1 className="text-xl font-bold ml-2 uppercase flex items-center cursor-pointer bg-secondary p-2 sm:px-4 rounded-2xl"><ShoppingCartOutlined />
-                        &nbsp; <span className="hidden sm:block">Cart</span></h1>
+                        &nbsp;<Link href="/cart"><span className="hidden sm:block">Cart</span></Link></h1>
                 </Badge>
                 <h1 className="text-xl ml-2 font-bold uppercase flex items-center cursor-pointer bg-secondary p-2 sm:px-4 rounded-2xl"><UserOutlined /> &nbsp; <span className="hidden sm:block">Login</span></h1>
 

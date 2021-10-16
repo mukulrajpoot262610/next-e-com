@@ -26,9 +26,9 @@ const ProductCover = ({ data }) => {
             </div>
             <div className="flex items-center">
                 {
-                    salePrice === price ? "" : <h1 className="my-2 ml-4 font-light line-through text-lg">${salePrice}</h1>
+                    salePrice === price ? "" : <h1 className="my-2 ml-4 font-light line-through text-lg">${price}</h1>
                 }
-                <h1 className="my-2 mx-4 font-bold text-lg">${price}</h1>
+                <h1 className="my-2 mx-4 font-bold text-lg">${salePrice}</h1>
             </div>
             <button className="absolute bottom-0 p-4 w-full bg-black text-white rounded-b-2xl font-bold">Add to Cart</button>
         </div>

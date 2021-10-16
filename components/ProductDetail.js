@@ -12,6 +12,7 @@ const ProductDetail = ({ data }) => {
     const [visible, setVisible] = useState(false);
     const [shoeSize, setShoeSize] = useState()
     const [qty, setQty] = useState(1)
+    console.log(qty)
 
     const cart = useSelector(state => state.cart.cartItems)
     const dispatch = useDispatch()
@@ -34,7 +35,7 @@ const ProductDetail = ({ data }) => {
         e.preventDefault()
         if (shoeSize) {
             message.success('Successfully Added to Cart')
-            dispatch(addToCart(_id, qty, shoeSize))
+            dispatch(addToCart(_id, Number(qty), shoeSize))
             showModal()
         } else {
             message.error('Please Select Size!')
@@ -46,9 +47,6 @@ const ProductDetail = ({ data }) => {
     const handleCancel = () => {
         setIsModalVisible(false);
     };
-
-
-    console.log(data)
 
     return (
         <>
@@ -96,7 +94,7 @@ const ProductDetail = ({ data }) => {
                             </div>
 
                             <div className="flex items-center justify-between my-8">
-                                <select defaultValue="1" size="large" className="border-2 bg-transparent w-24 cursor-pointer active:text-white py-4 px-6 m-2" onChange={() => setQty(e.target.value)}>
+                                <select defaultValue="1" size="large" className="border-2 bg-transparent w-24 cursor-pointer active:text-white py-4 px-6 m-2" onChange={(e) => setQty(e.target.value)}>
                                     <option value={1}>1</option>
                                     <option value={2}>2</option>
                                     <option value={3}>3</option>
@@ -155,14 +153,14 @@ const ProductDetail = ({ data }) => {
                             <h1 className="font-bold">SIZE</h1>
                             <h1 className="font-bold flex items-center cursor-pointer" onClick={showLargeDrawer}>SIZE CHART <ToolOutlined /></h1>
                         </div>
-                        <div className="flex my-4">
+                        <div className="flex flex-wrap my-4">
                             {
                                 size.map((e, index) => <div className="border-2 cursor-pointer hover:border-black active:text-white py-4 px-6 m-2" key={index} onClick={() => setShoeSize(e)} >{e}</div>)
                             }
                         </div>
 
-                        <div className="flex items-center justify-between my-8">
-                            <select defaultValue="1" size="large" className="border-2 bg-transparent w-24 cursor-pointer active:text-white py-4 px-6 m-2" onChange={() => setQty(e.target.value)}>
+                        <div className="flex items-start justify-between my-8">
+                            <select defaultValue="1" size="large" className="border-2 bg-transparent w-24 cursor-pointer active:text-white py-4 px-6 m-2" onChange={(e) => setQty(e.target.value)}>
                                 <option value={1}>1</option>
                                 <option value={2}>2</option>
                                 <option value={3}>3</option>
@@ -170,9 +168,9 @@ const ProductDetail = ({ data }) => {
                                 <option value={5}>5</option>
                                 <option value={6}>6</option>
                             </select>
-                            <button className="border-2 w-full cursor-pointer bg-black text-white py-4 px-6 m-2" onClick={handleAddToCart}>Add To Cart</button>
                             <button className="border-2 cursor-pointer hover:border-black active:text-white py-4 px-6 m-2"><HeartOutlined /></button>
                         </div>
+                        <button className="border-2 w-full cursor-pointer bg-black text-white py-4 px-6 mb-4" onClick={handleAddToCart}>Add To Cart</button>
 
                         <hr className="text-gray-300" />
                         <h1 className="font-light my-8 text-red-700 text-sm flex items-center"><CarOutlined /> &nbsp; This item is Eligible for free delivery</h1>
