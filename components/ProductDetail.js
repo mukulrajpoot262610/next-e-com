@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { Row, Col, Drawer, Carousel, Select, Rate, message, Modal, Button } from 'antd';
-import { ToolOutlined, HeartOutlined, CarOutlined } from '@ant-design/icons'
+import { ToolOutlined, HeartOutlined, HeartFilled, CarOutlined } from '@ant-design/icons'
 import { useDispatch, useSelector } from 'react-redux'
 
 import ReviewCover from './ReviewCover';
 import { addToCart } from '../store/actions/cartAction'
+import { addToWish } from '../store/actions/wishAction'
 import CartModalCover from './CartModalCover';
 
 const ProductDetail = ({ data }) => {
@@ -12,15 +13,15 @@ const ProductDetail = ({ data }) => {
     const [visible, setVisible] = useState(false);
     const [shoeSize, setShoeSize] = useState()
     const [qty, setQty] = useState(1)
-    console.log(qty)
 
     const cart = useSelector(state => state.cart.cartItems)
+    const wish = useSelector(state => state.wish.wishItems)
+    console.log(wish.filter(x => x.id === _id).length > 0)
     const dispatch = useDispatch()
 
     const { _id, name, description, rating, price, salePrice, image, image1, image2, image3, numOfReviews, reviews } = data
 
     const size = [7, 8, 9, 10, 11]
-
 
     const showLargeDrawer = () => {
         setVisible(true);
@@ -47,6 +48,14 @@ const ProductDetail = ({ data }) => {
     const handleCancel = () => {
         setIsModalVisible(false);
     };
+    const handleAddToWishlist = () => {
+        if (shoeSize) {
+            message.success('Successfully Added to Wishlist')
+            dispatch(addToWish(_id, Number(qty), shoeSize))
+        } else {
+            message.error('Please Select Size!')
+        }
+    }
 
     return (
         <>
@@ -103,7 +112,11 @@ const ProductDetail = ({ data }) => {
                                     <option value={6}>6</option>
                                 </select>
                                 <button className="border-2 w-full cursor-pointer bg-black text-white py-4 px-6 m-2" onClick={handleAddToCart}>Add To Cart</button>
-                                <button className="border-2 cursor-pointer hover:border-black active:text-white py-4 px-6 m-2"><HeartOutlined /></button>
+                                <button className="border-2 cursor-pointer hover:border-black active:text-white py-4 px-6 m-2" onClick={handleAddToWishlist}>
+                                    {
+                                        wish.filter(x => x.id === _id).length > 0 ? <HeartFilled /> : <HeartOutlined />
+                                    }
+                                </button>
                             </div>
 
                             <hr className="text-gray-300" />
@@ -168,7 +181,11 @@ const ProductDetail = ({ data }) => {
                                 <option value={5}>5</option>
                                 <option value={6}>6</option>
                             </select>
-                            <button className="border-2 cursor-pointer hover:border-black active:text-white py-4 px-6 m-2"><HeartOutlined /></button>
+                            <button className="border-2 cursor-pointer hover:border-black active:text-white py-4 px-6 m-2" onClick={handleAddToWishlist}>
+                                {
+                                    wish.filter(x => x.id === _id).length > 0 ? <HeartFilled /> : <HeartOutlined />
+                                }
+                            </button>
                         </div>
                         <button className="border-2 w-full cursor-pointer bg-black text-white py-4 px-6 mb-4" onClick={handleAddToCart}>Add To Cart</button>
 

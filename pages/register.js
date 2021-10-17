@@ -30,11 +30,11 @@ const Register = () => {
                     <Col span={24} xl={10} className="p-4">
                         <h1 className="font-bold text-5xl uppercase">REGISTER</h1>
                         <p className="my-4">Sign up with</p>
-                        <div className="flex justify-between mb-4 border items-center p-4">
+                        <div className="flex justify-between cursor-pointer mb-4 border items-center p-4">
                             <h1 className="font-bold uppercase text-xl">Facebook</h1>
                             <FacebookOutlined className="text-2xl" />
                         </div>
-                        <div className="flex justify-between mb-4 border items-center p-4">
+                        <div className="flex justify-between cursor-pointer mb-4 border items-center p-4">
                             <h1 className="font-bold uppercase text-xl">Google</h1>
                             <GoogleOutlined className="text-2xl" />
                         </div>

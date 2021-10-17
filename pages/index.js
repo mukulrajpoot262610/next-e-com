@@ -65,7 +65,7 @@ export default function Home() {
 
       <div className="w-full my-8 px-4 lg:px-10">
         {
-          size.width > 768 ? <img src="/rcb.png" className="rounded-2xl w-full" /> : <img src="/rcb-mobile.png" className="rounded-2xl w-full" />
+          size.width > 768 ? <img src="/rcb.png" className=" w-full" /> : <img src="/rcb-mobile.png" className=" w-full" />
         }
 
       </div>
@@ -80,13 +80,13 @@ export default function Home() {
       </div>
 
       <div className="w-full my-8 px-4 lg:px-10 relative">
-        <video autoPlay loop muted className="w-full h-750 rounded-2xl object-cover">
+        <video autoPlay loop muted className="w-full h-750  object-cover">
           <source src="" />
         </video>
         <div className="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 flex items-center justify-between w-9/12 flex-col-reverse xl:flex-row">
           <div>
             <h1 className="font-extrabold text-black text-4xl my-4">SHOP THE BEST ITEM.</h1>
-            <button className="bg-white font-extrabold text-black text-2xl rounded-2xl py-2 px-4 my-4">SHOP NOW.</button>
+            <button className="bg-white font-extrabold text-black text-2xl  py-2 px-4 my-4">SHOP NOW.</button>
           </div>
           <div className="flex-col flex justify-center items-center">
             <img src="/Logo_NIKE.svg" />

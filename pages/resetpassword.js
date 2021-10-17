@@ -4,7 +4,8 @@ import Link from 'next/link'
 import { Col, Row, Spin, Form, Input, Button, Checkbox } from 'antd'
 import { ArrowRightOutlined } from '@ant-design/icons'
 
-const Login = () => {
+const ResetPassword = () => {
+
 
     const onFinish = (values) => {
         console.log('Success:', values);
@@ -17,7 +18,7 @@ const Login = () => {
     return (
         <div className="flex flex-col items-center justify-center">
             <Head>
-                <title>Login - theBootStore</title>
+                <title>Password Reset - theBootStore</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
@@ -27,11 +28,10 @@ const Login = () => {
 
             <div className="container w-full p-4 px-4 lg:px-10 mt-10">
                 <Row className="flex flex-col xl:flex-row">
-                    <Col span={24} xl={10} className="p-4">
-                        <h1 className="font-bold text-5xl uppercase">LOG IN</h1>
-                        <Link href="/forgetpassword">
-                            <p className="my-4 underline cursor-pointer">Forgotten Password?</p>
-                        </Link>
+                    <Col span={24} xl={14} className="p-4">
+                        <h1 className="font-bold text-5xl uppercase">
+                            CREATE YOUR NEW PASSWORD</h1>
+                        <p className="my-4">Set a new password for theBootStore. After creating the password you’ll stay logged in.</p>
                         <Form
                             name="basic"
                             onFinish={onFinish}
@@ -39,17 +39,6 @@ const Login = () => {
                             autoComplete="off"
                             size="large"
                         >
-                            <Form.Item
-                                name="email"
-                                rules={[
-                                    {
-                                        required: true,
-                                        message: 'Please input your Email!',
-                                    },
-                                ]}
-                            >
-                                <Input type='text' className="w-full border outline-none mt-4 p-4" placeholder="Enter Email Here..." />
-                            </Form.Item>
                             <Form.Item
                                 name="password"
                                 rules={[
@@ -59,17 +48,24 @@ const Login = () => {
                                     },
                                 ]}
                             >
-                                <Input.Password className="w-full border outline-none mt-4 p-4" placeholder="Enter Password Here..." />
+                                <Input.Password type='text' className="w-full border outline-none mt-4 p-4" placeholder="Enter Password Here..." />
                             </Form.Item>
-                            <button type="submit" className="border-2 cursor-pointer bg-black text-white py-4 px-6 mb-4 flex items-center uppercase font-bold mt-4">Log In &nbsp; <ArrowRightOutlined /></button>
+                            <Form.Item
+                                name="cpassword"
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: 'Please input your Password!',
+                                    },
+                                ]}
+                            >
+                                <Input.Password type='text' className="w-full border outline-none mt-4 p-4" placeholder="Confirm Password Here..." />
+                            </Form.Item>
+                            <button type="submit" className="border-2 cursor-pointer bg-black text-white py-4 px-6 mb-4 flex items-center uppercase font-bold mt-4">Confirm &nbsp; <ArrowRightOutlined /></button>
                         </Form>
                     </Col>
-                    <Col span={24} xl={4}></Col>
                     <Col span={24} xl={10} className="p-4">
-                        <h1 className="font-bold text-5xl uppercase">CREATE AN ACCOUNT</h1>
-                        <Link href="/register">
-                            <button className="border-2 cursor-pointer bg-black text-white py-4 px-6 mb-4 flex items-center uppercase font-bold mt-4">Register &nbsp; <ArrowRightOutlined /></button>
-                        </Link>
+
                     </Col>
                 </Row>
             </div>
@@ -78,4 +74,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default ResetPassword
