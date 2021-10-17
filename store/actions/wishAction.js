@@ -16,10 +16,23 @@ export const addToWish = (id, qty, size) => async (dispatch) => {
                 image: data.image,
                 price: data.price,
                 salePrice: data.salePrice,
+                brand: data.brand,
                 countInStock: data.countInStock,
                 size: size,
                 qty: qty,
             }
+        })
+
+    } catch (err) {
+        console.log(err.message)
+    }
+}
+
+export const removeFromWish = (id) => async (dispatch) => {
+    try {
+        dispatch({
+            type: 'WISH_REMOVE_ITEM',
+            payload: id
         })
 
     } catch (err) {

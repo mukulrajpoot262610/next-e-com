@@ -5,15 +5,22 @@ import thunk from 'redux-thunk'
 import { userReducer } from './reducers/userReducer'
 import { productListReducer, productDetailReducer } from './reducers/productReducer'
 import { cartReducer } from './reducers/cartReducer'
+import { wishReducer } from './reducers/wishReducer'
 
 const reducer = combineReducers({
     user: userReducer,
     productList: productListReducer,
     productDetail: productDetailReducer,
-    cart: cartReducer
+    cart: cartReducer,
+    wish: wishReducer
 })
 
-const INITIAL_STATE = {}
+
+const INITIAL_STATE = {
+    cart: {
+        cartItems: typeof window !== 'undefined' ? (localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : []) : []
+    }
+}
 
 const middleware = [thunk]
 

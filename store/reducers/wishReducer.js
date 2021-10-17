@@ -19,8 +19,7 @@ export const wishReducer = (state = { wishItems: [] }, action) => {
         case 'WISH_REMOVE_ITEM':
             return {
                 ...state,
-                loading: false,
-                product: action.payload,
+                wishItems: state.wishItems.filter(x => x.product !== action.payload)
             }
         default:
             return state
