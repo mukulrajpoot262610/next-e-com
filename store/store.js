@@ -18,7 +18,8 @@ const reducer = combineReducers({
 
 const INITIAL_STATE = {
     cart: {
-        cartItems: typeof window !== 'undefined' ? (localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : []) : []
+        cartItems: typeof window !== 'undefined' ? (localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : []) : [],
+        shippingAddress: typeof window !== 'undefined' ? (localStorage.getItem('shippingAddress') ? JSON.parse(localStorage.getItem('shippingAddress')) : {}) : {},
     }
 }
 

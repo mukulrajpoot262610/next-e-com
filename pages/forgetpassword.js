@@ -1,15 +1,25 @@
 import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import { Col, Row, Spin, Form, Input, Button, Checkbox, message } from 'antd'
+import { Col, Row, Spin, Form, Input, message } from 'antd'
 import { ArrowRightOutlined } from '@ant-design/icons'
+import firebase from '../config/firebase'
 
 const ForgetPassword = () => {
 
+    const URL = process.env.VERCEL_ENV === 'dev' ? "http://localhost:3000/login" : "https://next-e-com.vercel.app/login"
 
-    const onFinish = (values) => {
+    const onFinish = async (values) => {
         console.log('Success:', values);
-        message.success("Please check your email for a link to reset your password.")
+        await firebase.auth().sendPasswordResetEmail(values.email, {
+            url: URL
+        })
+            .then((res) => {
+                message.success("Please check your email for a link to reset your password.")
+            })
+            .catch((err) => {
+                message.error(err.message)
+            })
     };
 
     const onFinishFailed = (errorInfo) => {

@@ -1,14 +1,25 @@
 import React from 'react'
 import Head from 'next/head'
-import Link from 'next/link'
-import { Col, Row, Spin, Form, Input, Button, Checkbox } from 'antd'
+import { Col, Row, Spin, Form, Input, message } from 'antd'
 import { ArrowRightOutlined } from '@ant-design/icons'
+import firebase from '../config/firebase'
+import { useRouter } from 'next/router'
 
 const ResetPassword = () => {
 
+    const router = useRouter()
 
-    const onFinish = (values) => {
+    const onFinish = async (values) => {
+        if (values.password !== values.cpassword) {
+            return message.error('Password should Match!')
+        }
         console.log('Success:', values);
+        await firebase.auth().confirmPasswordReset(router.query.oobCode, values.password)
+            .then(res => {
+                message.success('Password has been changed, you acn login now!')
+                router.push('/login')
+            })
+            .catch(err => message.error(err.message))
     };
 
     const onFinishFailed = (errorInfo) => {
