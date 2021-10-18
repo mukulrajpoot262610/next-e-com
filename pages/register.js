@@ -1,10 +1,10 @@
 import React from 'react'
 import Head from 'next/head'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Col, Row, Form, Input, message } from 'antd'
 import { ArrowRightOutlined, GoogleOutlined, CheckOutlined } from '@ant-design/icons'
 import firebase from '../config/firebase'
+import withoutAuth from '../utils/withoutAuth'
 
 const Register = () => {
 
@@ -19,7 +19,7 @@ const Register = () => {
                     displayName: values.name
                 }).then((res) => {
                     message.success('Registration Successfull!')
-                    router.push('/login')
+                    router.push('/')
                 })
             })
             .catch((err) => {
@@ -30,6 +30,17 @@ const Register = () => {
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
+
+    const handleGoogleLogin = async () => {
+        await firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
+            .then((res) => {
+                message.success('Registration Successfull!')
+                router.push('/user/account')
+            })
+            .catch((err) => {
+                message.error(err.message)
+            })
+    }
 
     return (
         <div className="flex flex-col items-center justify-center">
@@ -47,7 +58,7 @@ const Register = () => {
                     <Col span={24} xl={10} className="p-4">
                         <h1 className="font-bold text-5xl uppercase">REGISTER</h1>
                         <p className="my-4">Sign up with</p>
-                        <div className="flex justify-between cursor-pointer mb-4 border items-center p-4">
+                        <div className="flex justify-between cursor-pointer mb-4 border items-center p-4" onClick={handleGoogleLogin}>
                             <h1 className="font-bold uppercase text-xl">Google</h1>
                             <GoogleOutlined className="text-2xl" />
                         </div>
@@ -118,4 +129,4 @@ const Register = () => {
     )
 }
 
-export default Register
+export default withoutAuth(Register)

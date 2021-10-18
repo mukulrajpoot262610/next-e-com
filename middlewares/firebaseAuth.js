@@ -21,8 +21,8 @@ const firebaseAuth = async (req, res, next) => {
             next()
         } else {
             let newUser = await new User({
-                email: firebaseUser.email,
                 name: firebaseUser.name,
+                email: firebaseUser.email,
                 avatar: firebaseUser.picture ? firebaseUser.picture : '/images/man.png',
             }).save();
             if (profile) {

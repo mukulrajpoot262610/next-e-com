@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { Badge, Menu, Dropdown, message } from 'antd'
 import { useSelector } from 'react-redux'
 import { UserOutlined, ShoppingCartOutlined, HeartOutlined } from '@ant-design/icons'
@@ -7,8 +8,10 @@ import firebase from '../config/firebase'
 
 const Navbar = () => {
 
+    const router = useRouter()
     const cartItems = useSelector(state => state.cart.cartItems)
     const wishItems = useSelector(state => state.wish.wishItems)
+    const userData = useSelector(state => state.user.userData)
     const isAuth = useSelector(state => state.user.isAuth)
 
     const handleLogout = async () => {
@@ -17,7 +20,6 @@ const Navbar = () => {
                 message.success('Logged Out Successfully')
                 router.replace('/')
                 localStorage.clear()
-                console.log(res)
             })
             .catch((err) => {
                 message.error(err.message)
@@ -27,7 +29,9 @@ const Navbar = () => {
     const menu = (
         <Menu>
             <Menu.Item key="0">
-                <h1>Profile</h1>
+                <Link href='/user/account'>
+                    <h1>Profile</h1>
+                </Link>
             </Menu.Item>
             <Menu.Divider />
             <Menu.Item key="1">

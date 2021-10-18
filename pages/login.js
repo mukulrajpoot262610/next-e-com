@@ -4,14 +4,19 @@ import Link from 'next/link'
 import { Col, Row, Spin, Form, Input, Button, Checkbox, message } from 'antd'
 import { ArrowRightOutlined } from '@ant-design/icons'
 import firebase from '../config/firebase'
+import { useRouter } from 'next/router'
+import withoutAuth from '../utils/withoutAuth'
 
 const Login = () => {
+
+    const router = useRouter()
 
     const onFinish = async (values) => {
         console.log('Success:', values);
         await firebase.auth().signInWithEmailAndPassword(values.email, values.password)
             .then((res) => {
                 message.success('Logged in Successfully 🎉')
+                router.push('/')
             })
             .catch((err) => {
                 message.error(err.message)
@@ -86,4 +91,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default withoutAuth(Login)

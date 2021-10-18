@@ -5,7 +5,6 @@ import { CarOutlined, ArrowRightOutlined } from '@ant-design/icons'
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
 import { Col, Row, Form, Input } from 'antd'
 import { useSelector, useDispatch } from 'react-redux'
-import CartCover from '../components/CartCover'
 import OrderCover from '../components/OrderCover'
 import withAuth from '../utils/withAuth';
 

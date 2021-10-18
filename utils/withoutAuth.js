@@ -10,7 +10,7 @@ const withoutAuth = (WrappedComponent) => {
 
             // If there is no access token we redirect to "/" page.
             if (accessToken) {
-                Router.replace("/user/feed");
+                Router.replace("/");
                 return null;
             }
 
