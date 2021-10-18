@@ -78,7 +78,7 @@ const Cart = () => {
                                     {
                                         (OPrice && DPrice) ? (
                                             <>
-                                                <div className="h-72 border p-4">
+                                                <div className="border p-4">
                                                     <h1 className="font-bold text-xl uppercase mb-4">Order summary</h1>
                                                     <div className="w-full flex justify-between items-center my-2">
                                                         <h1>Original Price: </h1>
@@ -104,7 +104,9 @@ const Cart = () => {
                                             </>
                                         ) : <Spin />
                                     }
-                                    <button className="border-2 cursor-pointer bg-black text-white w-full py-4 px-6 my-4 flex items-center uppercase">CheckOut &nbsp; <ArrowRightOutlined /></button>
+                                    <Link href="/delivery">
+                                        <button className="border-2 cursor-pointer bg-black text-white w-full py-4 px-6 my-4 flex items-center uppercase">CheckOut &nbsp; <ArrowRightOutlined /></button>
+                                    </Link>
                                     <hr />
                                     <input type='text' className="w-full border outline-none my-4 p-4" placeholder="Enter Code Here..." />
                                     <button className="border-2 cursor-pointer bg-black text-white w-full py-4 px-6 mb-4 flex items-center uppercase">Apply &nbsp; <ArrowRightOutlined /></button>

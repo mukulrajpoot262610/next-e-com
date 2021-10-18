@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { CarOutlined, ArrowRightOutlined } from '@ant-design/icons'
-import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
-import { Col, Row, Spin, Form, Input, Button, Checkbox } from 'antd'
+import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+import { Col, Row, Form, Input } from 'antd'
 import { useSelector, useDispatch } from 'react-redux'
 import CartCover from '../components/CartCover'
 import OrderCover from '../components/OrderCover'
+import withAuth from '../utils/withAuth';
 
-const delivery = () => {
+const Delivery = () => {
 
     const dispatch = useDispatch()
     const cartItems = useSelector(state => state.cart.cartItems)
@@ -48,8 +49,8 @@ const delivery = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <div className="w-full p-4 px-4 lg:px-10">
-                <img src="" alt="" />
+            <div className="container w-full p-4 px-4 lg:px-10">
+                <hr />
             </div>
 
             <div className="container w-full p-4 px-4 lg:px-10 mt-10">
@@ -74,7 +75,7 @@ const delivery = () => {
                                         },
                                     ]}
                                 >
-                                    <Input type='text' className="w-full border outline-none mt-4 p-4" placeholder="Enter Email Here..." />
+                                    <Input type='text' className="w-full border outline-none mt-4 p-4" placeholder="Enter FirstName Here..." />
                                 </Form.Item>
                                 <Form.Item
                                     className="ml-2 w-full"
@@ -86,7 +87,7 @@ const delivery = () => {
                                         },
                                     ]}
                                 >
-                                    <Input type='text' className="w-full border outline-none mt-4 p-4" placeholder="Enter Email Here..." />
+                                    <Input type='text' className="w-full border outline-none mt-4 p-4" placeholder="Enter LastName Here..." />
                                 </Form.Item>
                             </div>
                             <Form.Item
@@ -170,9 +171,10 @@ const delivery = () => {
                                         },
                                     ]}
                                 >
-                                    <Input type='text' className="w-full border outline-none mt-4 p-4" placeholder="Enter Pincode Here..." maxLength={6} />
+                                    <Input type='number' className="w-full border outline-none mt-4 p-4" placeholder="Enter Pincode Here..." maxLength={6} />
                                 </Form.Item>
                             </div>
+                            <button type="submit" className="border-2 cursor-pointer bg-black text-white py-4 px-6 my-4 flex items-center uppercase">Review & Pay &nbsp; <ArrowRightOutlined /></button>
                         </Form>
                         <hr />
                         <h1 className="font-bold text-2xl uppercase my-4">ARRIVING</h1>
@@ -183,8 +185,6 @@ const delivery = () => {
                             </div>
                             <p className="cursor-pointer flex items-center"><CarOutlined /> &nbsp;within 3-9 business days</p>
                         </div>
-
-                        <button className="border-2 cursor-pointer bg-black text-white py-4 px-6 my-4 flex items-center uppercase">Review & Pay &nbsp; <ArrowRightOutlined /></button>
                         <hr />
                     </Col>
                     <Col span={24} xl={2}></Col>
@@ -234,4 +234,4 @@ const delivery = () => {
     )
 }
 
-export default delivery
+export default withAuth(Delivery)

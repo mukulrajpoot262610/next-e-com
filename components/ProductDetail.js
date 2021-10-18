@@ -9,7 +9,7 @@ import { addToWish } from '../store/actions/wishAction'
 import CartModalCover from './CartModalCover';
 
 const ProductDetail = ({ data }) => {
-    const [isModalVisible, setIsModalVisible] = useState(true);
+    const [isModalVisible, setIsModalVisible] = useState(false);
     const [visible, setVisible] = useState(false);
     const [shoeSize, setShoeSize] = useState()
     const [qty, setQty] = useState(1)
@@ -62,16 +62,16 @@ const ProductDetail = ({ data }) => {
             <div className="w-full flex flex-col items-center justify-center">
                 <Row className="container hidden xl:flex">
                     <Col span={16} className="p-4">
-                        <img src={image} className="object-cover h-900 w-full rounded-2xl" />
+                        <img src={image} className="object-cover h-900 w-full " />
                         <Row className="">
                             <Col span={12}>
-                                <img src={image1} className="object-cover h-500 w-full rounded-2xl" />
+                                <img src={image1} className="object-cover h-500 w-full " />
                             </Col>
                             <Col span={12}>
-                                <img src={image2} className="object-cover h-500 w-full rounded-2xl" />
+                                <img src={image2} className="object-cover h-500 w-full " />
                             </Col>
                         </Row>
-                        <img src={image3} className="object-cover h-900 w-full rounded-2xl" />
+                        <img src={image3} className="object-cover h-900 w-full " />
                     </Col>
 
                     <Col className="p-4" span={8}>
@@ -136,11 +136,11 @@ const ProductDetail = ({ data }) => {
                 </Row>
 
                 <div className="xl:hidden w-full max-h-900">
-                    <Carousel autoplay className="rounded-2xl w-full">
-                        <img src={image} className="max-h-900 object-cover rounded-2xl" />
-                        <img src={image1} className="max-h-900 object-cover rounded-2xl" />
-                        <img src={image2} className="max-h-900 object-cover rounded-2xl" />
-                        <img src={image3} className="max-h-900 object-cover rounded-2xl" />
+                    <Carousel autoplay className=" w-full">
+                        <img src={image} className="max-h-900 object-cover " />
+                        <img src={image1} className="max-h-900 object-cover " />
+                        <img src={image2} className="max-h-900 object-cover " />
+                        <img src={image3} className="max-h-900 object-cover " />
                     </Carousel>
                 </div>
 

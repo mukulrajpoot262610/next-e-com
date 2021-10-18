@@ -19,3 +19,9 @@ html {
   border-radius: 1rem;
   background-color: #2a2b2f;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

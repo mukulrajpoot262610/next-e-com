@@ -1,13 +1,21 @@
 import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import { Col, Row, Spin, Form, Input, Button, Checkbox } from 'antd'
+import { Col, Row, Spin, Form, Input, Button, Checkbox, message } from 'antd'
 import { ArrowRightOutlined } from '@ant-design/icons'
+import firebase from '../config/firebase'
 
 const Login = () => {
 
-    const onFinish = (values) => {
+    const onFinish = async (values) => {
         console.log('Success:', values);
+        await firebase.auth().signInWithEmailAndPassword(values.email, values.password)
+            .then((res) => {
+                message.success('Logged in Successfully 🎉')
+            })
+            .catch((err) => {
+                message.error(err.message)
+            })
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -30,7 +38,7 @@ const Login = () => {
                     <Col span={24} xl={10} className="p-4">
                         <h1 className="font-bold text-5xl uppercase">LOG IN</h1>
                         <Link href="/forgetpassword">
-                            <p className="my-4 underline cursor-pointer">Forgotten Password?</p>
+                            <p className="my-4 inline-block underline cursor-pointer">Forgotten Password?</p>
                         </Link>
                         <Form
                             name="basic"
