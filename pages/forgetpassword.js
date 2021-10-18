@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import { Col, Row, Spin, Form, Input, message } from 'antd'
+import { Col, Row, Form, Input, message } from 'antd'
 import { ArrowRightOutlined } from '@ant-design/icons'
 import firebase from '../config/firebase'
 
