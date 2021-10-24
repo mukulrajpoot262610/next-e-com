@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { detailProducts } from '../../store/actions/productAction'
 import { useRouter } from 'next/router'
 import { Spin, Alert } from 'antd';
-import ProductDetail from '../../components/ProductDetail';
+import ProductDetail2 from '../../components/ProductDetail2';
 
 const ProductDetailPage = () => {
 
@@ -25,9 +25,9 @@ const ProductDetailPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <div className="w-full p-4 px-4 lg:px-10">
+            <div className="w-full min-h-screen flex justify-center items-center py-4">
                 {
-                    loading ? <Spin size='large' /> : error ? (<Alert message="Error" type="error" showIcon />) : product && <ProductDetail data={product} />
+                    loading ? <Spin size='large' /> : error ? (<Alert message="Error" type="error" showIcon />) : product && <ProductDetail2 data={product} />
                 }
             </div>
         </div>
