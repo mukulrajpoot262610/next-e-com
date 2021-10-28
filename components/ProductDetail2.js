@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Row, Col, Drawer, Progress, Carousel, Tabs, Select, Rate, message, Modal, Button } from 'antd';
 import { ToolOutlined, HeartOutlined, HeartFilled, StarFilled, CarOutlined, ArrowRightOutlined, AppleOutlined, AndroidOutlined } from '@ant-design/icons'
 import { useDispatch, useSelector } from 'react-redux'
+import { useRouter } from 'next/router';
 
 import ReviewCover from './ReviewCover';
 import { addToCart } from '../store/actions/cartAction'
@@ -9,6 +10,7 @@ import { addToWish } from '../store/actions/wishAction'
 import CartModalCover from './CartModalCover';
 
 const ProductDetail = ({ data }) => {
+    const router = useRouter()
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [visible, setVisible] = useState(false);
     const [shoeSize, setShoeSize] = useState()
@@ -56,6 +58,9 @@ const ProductDetail = ({ data }) => {
         } else {
             message.error('Please Select Size!')
         }
+    }
+    const handleReview = () => {
+        router.push(`/product/submit-review/${_id}`)
     }
 
     useEffect(() => {
@@ -140,7 +145,7 @@ const ProductDetail = ({ data }) => {
                                         <ReviewCover />
                                         <div className="flex">
                                             <button type="submit" className="my-2 border-2 cursor-pointer bg-white text-black py-4 px-6 w-full flex items-center uppercase mr-2">Load More &nbsp; <ArrowRightOutlined /></button>
-                                            <button type="submit" className="my-2 border-2 cursor-pointer bg-black text-white py-4 px-6 w-full flex items-center uppercase ml-2">WRITE a Review &nbsp; <ArrowRightOutlined /></button>
+                                            <button onClick={handleReview} className="my-2 border-2 cursor-pointer bg-black text-white py-4 px-6 w-full flex items-center uppercase ml-2">WRITE a Review &nbsp; <ArrowRightOutlined /></button>
                                         </div>
                                     </Col>
                                 </Row>
@@ -197,7 +202,7 @@ const ProductDetail = ({ data }) => {
                     </Col>
                 </Row>
 
-                <div className="container xl:hidden w-full">
+                {/* <div className="container xl:hidden w-full">
                     <h1 className="font-bold text-4xl my-4">{name}</h1>
                     <p className="">{description}</p>
                     <div className='flex items-center'>
@@ -255,7 +260,7 @@ const ProductDetail = ({ data }) => {
                             <ReviewCover />
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
 
             <Modal title={`${cart.length} item(s) added to your cart!`} visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>

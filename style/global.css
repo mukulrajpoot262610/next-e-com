@@ -11,6 +11,14 @@ html {
   font-family: 'Poppins', sans-serif;
 }
 
+input[type='radio'] {
+  accent-color: #191919;
+  height: 30px;
+  width: 30px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
 ::-webkit-scrollbar {
   width: 0.5rem;
 }
