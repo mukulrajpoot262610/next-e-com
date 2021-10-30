@@ -203,8 +203,8 @@ const ProductDetail = ({ data }) => {
                         </div>
                     </div>
                 </div>
-
             </div>
+
             <Modal title={`${cart.length} item(s) added to your cart!`} visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
                 {
                     cart.map((e, index) => <CartModalCover key={index} data={e} />)

@@ -1,6 +1,6 @@
 import React, { createElement, useState } from 'react';
-import { Comment, Tooltip, Avatar } from 'antd';
-import { DislikeOutlined, LikeOutlined, DislikeFilled, LikeFilled } from '@ant-design/icons';
+import { Comment, Tooltip, Avatar, Rate } from 'antd';
+import { DislikeOutlined, LikeOutlined, DislikeFilled, LikeFilled, CheckOutlined } from '@ant-design/icons';
 
 const ReviewCover = () => {
     const [likes, setLikes] = useState(0);
@@ -35,30 +35,34 @@ const ReviewCover = () => {
     ];
 
     return (
-        <>
-            <Comment
-                actions={actions}
-                author={<a>Han Solo</a>}
-                avatar={
-                    <Avatar
-                        src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-                        alt="Han Solo"
-                    />
-                }
-                content={
-                    <p>
-                        We supply a series of design principles, practical patterns and high quality design
-                        resources (Sketch and Axure), to help people create their product prototypes beautifully
-                        and efficiently.
-                    </p>
-                }
-                datetime={
-                    <Tooltip title={new Date().toLocaleDateString()}>
-                        <span>{new Date().toLocaleDateString()}</span>
-                    </Tooltip>
-                }
-            />
-        </>
+        <div className="border p-4 my-2">
+            <div className="flex items-start justify-between w-full">
+                <Rate disabled allowHalf defaultValue={2} className="text-black" />
+                <h1>{new Date().toLocaleDateString()}</h1>
+            </div>
+            <div>
+                <h1 className="uppercase font-bold text-2xl my-4">PERFECT</h1>
+                <p>We supply a series of design principles, practical patterns and high quality design
+                    resources (Sketch and Axure), to help people create their product prototypes beautifully
+                    and efficiently.</p>
+                <p className="flex items-center my-2"><CheckOutlined /> &nbsp; I recommend this product</p>
+                <h1 className="uppercase font-bold text-sm my-4">MUKUL <span className="capitalize font-light">Verified Purchase</span> </h1>
+            </div>
+            <div className="flex">
+                <Tooltip key="comment-basic-like" title="Like" className="flex items-center mx-2">
+                    <span onClick={like}>
+                        {createElement(action === 'liked' ? LikeFilled : LikeOutlined)}
+                        <span className="comment-action" className="font-bold">&nbsp;{likes}</span>
+                    </span>
+                </Tooltip>
+                <Tooltip key="comment-basic-dislike" title="Dislike" className="flex items-center mx-2">
+                    <span onClick={dislike}>
+                        {React.createElement(action === 'disliked' ? DislikeFilled : DislikeOutlined)}
+                        <span className="comment-action" className="font-bold">&nbsp;{dislikes}</span>
+                    </span>
+                </Tooltip>
+            </div>
+        </div>
     )
 }
 

@@ -197,6 +197,28 @@ const PRODUCT_LIST = [
         salePrice: '235',
         countInStock: '20',
     },
+    {
+        name: 'ULTRABOOST DNA X LEGO® COLORS SHOES',
+        image: "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/6a0d6246e26a4852825dad3900baddfd_9366/Ultraboost_DNA_x_LEGO(r)_Colors_Shoes_White_FZ3983_01_standard.jpg",
+        image1: "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/dfd4c55131254e48a481ad3900baec2f_9366/Ultraboost_DNA_x_LEGO(r)_Colors_Shoes_White_FZ3983_02_standard.jpg",
+        image2: "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/9878e6718b5145b9bfbdad3900bafad9_9366/Ultraboost_DNA_x_LEGO(r)_Colors_Shoes_White_FZ3983_04_standard.jpg",
+        image3: "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/33025f283c4646809d12ad3900bb247b_9366/Ultraboost_DNA_x_LEGO(r)_Colors_Shoes_White_FZ3983_09_standard.jpg",
+        brand: 'Adidas',
+        category: 'Running',
+        description: 'HIGH-PERFORMANCE RUNNING SHOES MADE IN PARTNERSHIP WITH THE LEGO GROUP.Running is your time to play.And if you couldn\'t tell by the pops of color and LEGO® bricks inspired design, these adidas running shoes created with the LEGO Group are all about play. Play, and comfort. Because nothing needs to get in the way of a good time. A plush Boost midsole takes care of the cushioning, and the Continental™ Better Rubber outsole balances fast moves with steady grounding.',
+        rating: '4.9',
+        reviews: [
+            {
+                name: '',
+                rating: '',
+                comment: '',
+            }
+        ],
+        numOfReviews: '312',
+        price: '250',
+        salePrice: '250',
+        countInStock: '20',
+    },
 
 ]
 
