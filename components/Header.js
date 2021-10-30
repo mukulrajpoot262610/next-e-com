@@ -4,7 +4,12 @@ import { Carousel } from 'antd';
 const Header = () => {
     return (
         <div className="w-full ">
-            <img src="/1.png" alt="" />
+            <Carousel autoplay>
+                <img src="/banner_1.png" alt="" className="h-250 object-cover object-left lg:h-750" />
+                <img src="/banner_2.png" alt="" className="h-250 object-cover object-left lg:h-750" />
+                <img src="/banner_3.png" alt="" className="h-250 object-cover object-left lg:h-750" />
+                <img src="/banner_4.png" alt="" className="h-250 object-cover object-left lg:h-750" />
+            </Carousel>
         </div>
     )
 }
