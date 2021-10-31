@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
-import { Rate, Carousel } from 'antd';
+import React from 'react'
+import { Carousel } from 'antd';
 import Link from 'next/link'
 
 
 const ProductCover = ({ data }) => {
 
-    const { _id, name, rating, price, salePrice, image, image1, image2, image3, numOfReviews } = data
+    const { _id, name, price, salePrice, image, image1, image2, image3 } = data
 
     return (
         <div className="border-2 w-80 h-96 bg-white shadow-lg m-2 hover:border-black">
