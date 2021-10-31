@@ -24,10 +24,10 @@ const SubmitReview = () => {
                 <div className="bg-gray-100 h-250 w-full">
                     <Row>
                         <Col span={16} className="flex items-center justify-start px-10">
-                            <h1 className="font-semibold text-xl uppercase">{product.name}</h1>
+                            <h1 className="font-semibold text-xl uppercase">{product?.name}</h1>
                         </Col>
                         <Col span={8}>
-                            <img src={product.image} alt="" className="h-250" />
+                            <img src={product?.image} alt="" className="h-250" />
                         </Col>
                     </Row>
                 </div>
