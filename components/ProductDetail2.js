@@ -1,28 +1,27 @@
 import React, { useEffect, useState } from 'react'
-import { Row, Col, Drawer, Progress, Carousel, Tabs, Select, Rate, message, Modal, Button } from 'antd';
-import { ToolOutlined, HeartOutlined, HeartFilled, StarFilled, CarOutlined, ArrowRightOutlined, AppleOutlined, AndroidOutlined } from '@ant-design/icons'
-import { useDispatch, useSelector } from 'react-redux'
+import { Row, Col, Drawer, Progress, Carousel, Rate, Modal } from 'antd';
+import { ToolOutlined, StarFilled, CarOutlined, ArrowRightOutlined } from '@ant-design/icons'
+import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router';
 
 import ReviewCover from './ReviewCover';
-import { addToCart } from '../store/actions/cartAction'
-import { addToWish } from '../store/actions/wishAction'
+// import { addToCart } from '../store/actions/cartAction'
 import CartModalCover from './CartModalCover';
 
 const ProductDetail = ({ data }) => {
     const router = useRouter()
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [visible, setVisible] = useState(false);
-    const [shoeSize, setShoeSize] = useState()
-    const [qty, setQty] = useState(1)
+    const [setShoeSize] = useState()
+    const [setQty] = useState(1)
     const [color, setColor] = useState()
 
     const cart = useSelector(state => state.cart.cartItems)
     const wish = useSelector(state => state.wish.wishItems)
     console.log(wish.filter(x => x.id === _id).length > 0)
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
 
-    const { _id, name, description, rating, price, salePrice, image, image1, image2, image3, numOfReviews, reviews, brand, category } = data
+    const { _id, name, description, rating, price, salePrice, image, image1, image2, image3, numOfReviews, brand, category } = data
 
     const size = [7, 8, 9, 10, 11, 12]
 
@@ -32,33 +31,25 @@ const ProductDetail = ({ data }) => {
     const onClose = () => {
         setVisible(false);
     };
-    const showModal = () => {
-        setIsModalVisible(true);
-    };
-    const handleAddToCart = (e) => {
-        e.preventDefault()
-        if (shoeSize) {
-            message.success('Successfully Added to Cart')
-            dispatch(addToCart(_id, Number(qty), shoeSize))
-            showModal()
-        } else {
-            message.error('Please Select Size!')
-        }
-    }
+    // const showModal = () => {
+    //     setIsModalVisible(true);
+    // };
+    // const handleAddToCart = (e) => {
+    //     e.preventDefault()
+    //     if (shoeSize) {
+    //         message.success('Successfully Added to Cart')
+    //         dispatch(addToCart(_id, Number(qty), shoeSize))
+    //         showModal()
+    //     } else {
+    //         message.error('Please Select Size!')
+    //     }
+    // }
     const handleOk = () => {
         setIsModalVisible(false);
     };
     const handleCancel = () => {
         setIsModalVisible(false);
     };
-    const handleAddToWishlist = () => {
-        if (shoeSize) {
-            message.success('Successfully Added to Wishlist')
-            dispatch(addToWish(_id, Number(qty), shoeSize))
-        } else {
-            message.error('Please Select Size!')
-        }
-    }
     const handleReview = () => {
         router.push(`/product/submit-review/${_id}`)
     }

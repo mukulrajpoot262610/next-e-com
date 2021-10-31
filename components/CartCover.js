@@ -1,5 +1,5 @@
 import { Col, message, Row } from 'antd'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../store/actions/cartAction'
 import { removeFromCart } from '../store/actions/cartAction'

@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable @next/next/link-passhref */
 import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -11,12 +13,12 @@ const Navbar = () => {
     const router = useRouter()
     const cartItems = useSelector(state => state.cart.cartItems)
     const wishItems = useSelector(state => state.wish.wishItems)
-    const userData = useSelector(state => state.user.userData)
+    // const userData = useSelector(state => state.user.userData)
     const isAuth = useSelector(state => state.user.isAuth)
 
     const handleLogout = async () => {
         await firebase.auth().signOut()
-            .then((res) => {
+            .then(() => {
                 message.success('Logged Out Successfully')
                 router.replace('/')
                 localStorage.clear()
